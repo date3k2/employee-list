@@ -1,0 +1,21 @@
+.button {
+    background-color:#019160;
+    border-radius: 4px;
+    height: 40px;
+    padding:0 24px 0 24px;
+    font-family: 'Misa_regular';
+    font-size: 14px;
+    text-align: center;
+    border:none;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+}
+.button:hover {
+    background-color: #2fbe8e;
+}
+.button:active {
+    background-color: #01B075;
+}

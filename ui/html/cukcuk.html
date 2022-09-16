@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách nhân viên</title>
+    <link rel="icon" type="image/x-icon" href="../Resource/icon/favicon-32x32.png">
+    <script src="https://kit.fontawesome.com/96c867733c.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/button.css">
+    <link rel="stylesheet" href="../css/button_icon.css">
+    <link rel="stylesheet" href="../css/combobox.css">
+    <link rel="stylesheet" href="../css/popup.css">
+    <link rel="stylesheet" href="../css/toast_mess.css">
+    <link rel="stylesheet" href="../css/popupform.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="top-nav">
+        <div class="nav-left">
+            <div class="nav-logo">
+                <button class="nav-logo-icon"></button>
+                <div class="nav-logo-misa" > </div>
+            </div>
+            <div class="nav-department">
+                <div class="department">
+                    Nhà hàng Biển Đông  
+                </div>
+                <div class="nav-select"><i class='fas fa-angle-down' style="color:black;"></i></div>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="nav-right-bell"><i class="fa-regular fa-bell"></i></div>
+            <div class="nav-right-avatar"></div>
+            <div class="nav-right-name"> Nguyễn Duy Đạt</div>
+            <div class="nav-right-option"></div>
+
+        </div>
+    </div>
+    <div class="content">
+        <!-- Thanh side bar -->
+        <div class="sidebar"> 
+            <div class="sb-item">
+                <div class="sb-item-icon1"></div>
+                <div>Tổng quan </div>
+            </div>
+            <div class="sb-item">
+                <div class="sb-item-icon2"></div>
+                <div>Báo cáo</div>
+            </div>    
+            <div class="sb-item">
+                <div class="sb-item-icon3"></div>
+                <div>Mua hàng </div>
+            </div> 
+            <div class="sb-item">
+                <div class="sb-item-icon4"></div>
+                <div>Danh sách nhân viên</div>
+            </div>
+            <div class="sb-item">
+                <div class="sb-item-icon5"></div>
+                <div>Thiết lập hệ thống</div>
+            </div>
+        </div>
+
+        <div class="main">
+            <!-- Hiển thị tiêu đề, nút thêm mới nhân viên -->
+        <div class="main-dsnv-button">
+            <div class="main-dsnv"><h3>Danh sách nhân viên</h3></div>
+            <button class="button bt-add-employee">
+                <div class="icon-button"><i class="fa-solid fa-user-plus"></i></div>
+                <div class="content-button">Thêm nhân viên</div>
+            </button>
+         </div>
+
+
+         <div class="main-search-select-refreshbox">
+            <div class="main-ssf-left">
+                <!-- Ô tìm kiếm -->
+            <div class="main-searchbox cbb">
+                <div class="s-ic"></div>
+                <input type="text" class="cbb-input sb" id="inp-field" style="border-radius:4px;padding-right: 20px;" placeholder="Tìm kiếm theo Mã, Tên hoặc số điện thoại">
+                <div class="del-icon" id="inp1"></div>
+            </div>
+            <!-- Combobox lọc phòng ban -->
+            <div class="main-select-department">
+            <div class="cbb">
+                    <input type="text" class="cbb-input inp-disabled" id="DepartmentName" value="Tất cả phòng ban" disabled>
+                    <button class="button cbb-select"> <i class='fas fa-angle-down' style="color:black;width:16px;height:16px;position: relative;" id="down-arrow"></i></button>
+                    </div>
+                    <div class="cbb-value inp-disabled" id="cbb-option-dep"> </div>
+            </div>
+            <!-- Combobox lọc vị trí -->
+            <div class="main-select-position">
+                <div class="cbb">
+                    <input type="text" class="cbb-input" id="PositionName" value="Tất cả vị trí" disabled >
+                    <button class="button cbb-select"> <i class='fas fa-angle-down' style="color:black;width:16px;height:16px;position: relative;" id="down-arrow"></i></button>
+                </div>
+                <div class="cbb-value" id="cbb-option-pos"> </div>
+            </div>   
+            
+        </div>
+        <!-- Các nút chức năng  làm mới dữ liệu , nhân bản, xóa nhân viên   -->
+         <div class="main-add-del">
+            <button class="button-delete"> <i class="fa-solid fa-trash-can" style="color:red;font-size:20px;"></i></button>
+            <button class="button-duplicate"><i class="fa-regular fa-clone" style="color:rgb(26, 131, 192);font-size:20px;"></i></button>
+            <button class="button-refresh"><i class="fa-solid fa-arrows-rotate" style="color:black;font-size:20px;"></i></button>
+         </div>
+        </div>
+    <!-- Bảng dữ liệu nhân viên  -->
+        <div class="div-table">
+        <table id="employeeTable">
+            <thead>
+                <th code="EmployeeCode" style="width:110px;">Mã nhân viên</th>
+                <th code="EmployeeName" style="width:200px;"> Họ và tên</th>
+                <th code="Gender" style="width:90px;">Giới tính</th>
+                <th code="DateOfBirth" type="date" style="width:100px;">Ngày sinh</th>
+                <th code="PhoneNumber" style="width:110px;">Điện thoại</th>
+                <th code="Email" style="width:250px;">Email</th>
+                <th code="PositionName" style="width:160px;">Chức vụ</th>
+                <th code="DepartmentName" style="width:130px;">Phòng ban</th>
+                <th code="Salary" type="money" style="width:100px;">Mức lương</th>
+                <th code="WorkStatus" style="width:100px;">Tình trạng công việc</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Chuyển trang, chọn số trang, hiển thị tổng số nhân viên -->
+    <div class="bot-nav">
+        <div style="margin-left:5px;" class="total-count"></div>
+        <div class="bot-nav-button">
+            <button class="bot-nav-direct bot-nav-fp"> </button>
+            <button class="bot-nav-direct bot-nav-prev  "> </button>
+            <button class="bot-nav-num bgc-green">1</button>
+            <button class="bot-nav-num ">2</button>
+            <button class="bot-nav-num ">3</button>
+            <button class="bot-nav-num ">4</button>
+            <button class="bot-nav-direct bot-nav-next"> </button>
+            <button class="bot-nav-direct bot-nav-lp"> </button>
+        </div>
+        <select class="page-size">
+            <option>10 nhân viên/trang</option>
+            <option>15 nhân viên/trang</option>
+            <option>20 nhân viên/trang</option>
+            <option>25 nhân viên/trang</option>
+        </select>
+    </div>
+        </div>
+    </div>
+<!-- Form thêm mới, sửa -->
+    <div class="popup-add">
+        <div class="close-icon"> <img src="../Resource/icon/x.svg" class="x-icon" style="border-radius: 0px 4px 0px 4px"></div>
+        <div class="ttnv">THÔNG TIN NHÂN VIÊN</div>
+        <div class="pop-up-columns">
+            <div class="popup-avt-info">
+                <div class="popup-avt"></div>
+                <div class="popup-info">(Vui lòng chọn ảnh có định dạng
+                    .jpg, .jpeg, .png, .gif)
+                </div>
+            </div>
+
+            <div class="popup-infor1">
+                <div style="font-size:14px;color:rgb(75, 78, 80)">A. THÔNG TIN CHUNG:</div>
+                <div class="popup-infor1-line"></div>
+                <div class="label"> Mã nhân viên (<strong style="color: red;">*</strong>)</div>
+                    <input type="text" class="cbb-input employeeId" required tabindex="1" prop="EmployeeCode">
+                    <div class="wrong-input-text" style="max-width:178px;height:25px;"></div>
+                <div class="label"> Ngày sinh</div>
+                <input type="date" class="cbb-input" tabindex="3" prop="DateOfBirth">
+                <div class="wrong-input-text"></div>
+
+
+                <div class="label"> Số CMTND/ Căn cước (<strong style="color: red;">*</strong>)</div>
+                <input type="number" class="cbb-input" tabindex="5" required prop="IdentityID">
+                <div class="wrong-input-text"></div>
+
+                <div class="label"> Nơi cấp</div>
+                <input type="text" class="cbb-input" tabindex="7" prop="IdentityIssuedPlace">
+                <div class="wrong-input-text"></div>
+                <div class="label"> Email (<strong style="color: red;">*</strong>)</div>
+                <input type="text" class="cbb-input" tabindex="8" required prop="Email">
+                <div class="wrong-input-text"></div>
+
+                <div style="font-size:14px;color:rgb(75, 78, 80) ;margin-top:10px;">B. THÔNG TIN CÔNG VIỆC:</div>
+                <div class="popup-infor1-line"></div>
+                <div class="label"> Vị trí </div>
+                <select name="Vị trí" tabindex="10" prop="PositionName"> </select>
+                <div class="wrong-input-text"></div>
+                <div class="label"> Mã số thuế cá nhân</div>
+                <input type="number" class="cbb-input" tabindex="12" prop="TaxCode">
+                <div class="wrong-input-text"></div>
+                <div class="label"> Ngày gia nhập công ty</div>
+                <input type="date" class="cbb-input" tabindex="14" prop="JoinDate">
+                <div class="wrong-input-text"></div>
+            </div>
+
+            <div class="popup-infor2">
+                <div class="label"> Họ và tên (<strong style="color: red;">*</strong>)</div>
+                    <input type="text" class="cbb-input" required tabindex="2" prop="EmployeeName"> 
+                <div class="wrong-input-text" style="height:25px"></div>
+                <div class="label"> Giới tính </div>
+                <select name="Giới tính" tabindex="4" prop="Gender">
+                    <option>Nam</option>
+                    <option>Nữ</option>
+                    <option>Khác</option>
+                </select>
+                <div class="wrong-input-text"></div>
+                <div class="label"> Ngày cấp</div>
+                <input type="date" class="cbb-input" tabindex="6" prop="IdentityIssuedDate">
+                <div class="wrong-input-text"></div>
+                <div style="margin-top:79px">
+
+                <div class="label"> Số điện thoại (<strong style="color: red;">*</strong>)</div>
+                <input type="text" class="cbb-input" tabindex="9"  required prop="PhoneNumber">
+                <div class="wrong-input-text"></div>
+
+                </div>
+                <div style="margin-top:40px;">
+                    <div class="label"> Phòng ban </div>
+                    <select name="Phòng ban" tabindex="11" prop="DepartmentName">
+                    </select>
+                <div class="wrong-input-text"></div>
+                </div>
+                <div class="label"> Mức lương cơ bản</div>
+                <input type="text" class="cbb-input" tabindex="13" prop="Salary">
+                <div class="wrong-input-text"></div>
+                <div class="label" style="margin-top:6px;"> Tình trạng công việc </div>
+                    <select name="Tình trạng công việc" tabindex="15" prop="WorkStatus">
+                        <option>Đang làm việc</option>
+                        <option>Đang thử việc</option>
+                        <option>Đã nghỉ việc</option>
+                    </select>
+        </div>
+            </div>
+        <div class="submit-cancel">
+            <button class="button-icon button cancel" tabindex="16">Hủy</button>
+            <button class="button-icon button submit" style="margin-right:17px" tabindex="17">
+                <div class="icon-button" ><i class="fa-solid fa-floppy-disk"></i></div>
+                <div class="content-button">Lưu</div>
+            </button>
+        </div>
+    </div>
+<!-- Popup cảnh báo xóa nhân viên -->
+    <div class="pop-close">
+            <div class="close-icon"> <img src="../Resource/icon/x.svg" class="x-icon"> </div>
+             <div class="pop-mess">Cảnh báo</div>
+             <div class="notify">
+        <div class="alert-icon"><i class="fa-solid fa-triangle-exclamation" style="color:rgba(218, 65, 65, 0.966);"></i></div>
+                    <div class="nd-title">Bạn có chắc muốn xóa nhân viên <strong style="font-family:Misa_bold;"></strong> hay không?</div>
+             </div>
+             <div class="button-nav">
+                <button class=" button nav-continue"> Không </button>
+                <button class=" button nav-close">Có</button>
+        
+             </div>
+    </div>
+<!-- Các toast message -->
+    <!-- Thêm mới thành công -->
+    <div class="toast t-new">
+        <div class="toast-new">
+            <div class="toast-icon"><i class="fa-solid fa-circle-check" style="color:#1fa82b"></i></div>
+            <div style="font-size:16px;">Thêm mới thành công</div>
+            <div class="toast-close"><i class="fa-solid fa-xmark" style="color:#1fa82b"></i></div>
+        </div>
+    </div>
+    <!-- Xóa thành công nhân viên -->
+    <div class="toast t-delete">
+        <div class="toast-delete">
+            <div class="toast-icon"><i class="fa-solid fa-user-slash" style="color:#e72323"></i></div>
+            <div style="font-size:16px;">Xóa thành công </div>
+            <div class="toast-close"><i class="fa-solid fa-xmark" style="color:#e72323"></i></div>
+        </div>
+    </div>
+    <!-- Sửa thành công -->
+    <div class="toast t-edit">
+        <div class="toast-edit">
+            <div class="toast-icon"><i class="fa-solid fa-user-pen" style="color:#0677f8"></i></div>
+            <div style="font-size:16px;">Chỉnh sửa thành công </div>
+            <div class="toast-close"><i class="fa-solid fa-xmark" style="color:#0677f8"></i></div>
+        </div>
+    </div>
+</body>
+</html>

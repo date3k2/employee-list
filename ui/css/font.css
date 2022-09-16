@@ -1,0 +1,15 @@
+body {
+    font-family: 'Misa_regular';
+}
+@font-face {
+    font-family: 'Misa_regular';
+    src: url(../Resource/font/GoogleSans-Regular.otf);
+}
+@font-face {
+    font-family: 'Misa_bold';
+    src: url(../Resource/font/GoogleSans-Bold.otf);
+}
+@font-face {
+    font-family: 'Misa_medium';
+    src: url(../Resource/font/GoogleSans-Medium.otf);
+}

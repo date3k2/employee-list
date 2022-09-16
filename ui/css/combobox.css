@@ -1,0 +1,151 @@
+.label {
+    font-family: 'Misa_regular';
+    font-size: 12px;
+    margin: 5px 0px 5px 0px;
+    color:#000000;
+}
+.cbb {
+    display:flex;
+    align-items:center;
+}
+
+input:disabled {
+    cursor: default;
+    background-color: #ffffff;
+}
+::placeholder {
+    font-family:'Misa_regular';
+    font-size:13px;
+}
+.title-cbb {
+    font-family: 'Misa_medium';
+    font-size: 15px;
+    margin-bottom:4px;
+}
+.cbb-input {
+    height:30px;
+    border: 1px solid #BBBBBB;
+    border-radius: 4px;
+    outline: none;
+    text-align: left;
+    font-family: 'Misa_regular';
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding-left: 16px;
+    padding-right: 10px;
+    color: #000000;
+}
+.cbb-select {
+    background-color: #ffffff;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    border:1px solid #BBBBBB;
+    border-left:none;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:0px 5px;
+    height:44px;
+    margin-left:0px;
+}
+.cbb-select:hover {
+    background-color: #BBBBBB;
+    border-right-color: #BBBBBB;
+}
+.tg-sel { 
+    transform: rotate(180deg);
+}
+
+.cbb-value {
+    display:none;
+    position: absolute;
+    background-color: #ffffff;
+    color:#000000;
+    z-index: 1;
+}
+
+.cbb-item {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    padding-left:36px;
+    font-size:13px;
+    border:1px solid #BBBBBB;
+    border-top:none;
+    height:40px;
+}
+.cbb-item:hover {
+    background-color: #BBBBBB;
+    cursor: pointer;
+}
+.last-item {
+    border-radius: 0px 0px 4px 4px;
+}
+.show {
+    display:block;
+    }
+
+.field { 
+    display:flex;
+    align-items:center;
+}
+.cbb-input:focus {
+    border:1px solid #019160;
+}
+.cbb-input:focus::placeholder{
+    color:transparent;
+}
+.del-icon {
+margin-left:-40px;
+margin-right:50px;
+height: 20px;
+width: 20px;
+cursor: pointer;
+z-index: 1;
+background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7x_GrSHYtPX9WfZTgykcy4wewJAui9EvQ7XyputId_oTdqFSBuyuM-PN3MuyxtUooQ-w&usqp=CAU);
+background-repeat: no-repeat;
+background-size: contain;
+background-position: center;
+/* visibility: hidden; */
+display:none;
+}
+.s-ic {
+    height: 16px;
+    width: 16px;
+background-image: url(../Resource/icon/search.png);
+background-repeat: no-repeat;
+background-size: contain;
+background-position: center;
+padding-left:32px;
+z-index: 1;
+}
+.sb {
+    padding-left:40px;
+    margin-left:-48px;
+}
+
+.border-1 {
+    border-radius:4px 0px 0px 0px;
+}
+.border-2 {
+    border-radius:0px 4px 0px 0px;
+}
+.bgc-selected {
+    background-color: #019160;
+}
+.bgc-selected:hover {
+    background-color: #019160;
+}
+
+.del-icon2 {
+    margin-left: -70px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    z-index: 1;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7x_GrSHYtPX9WfZTgykcy4wewJAui9EvQ7XyputId_oTdqFSBuyuM-PN3MuyxtUooQ-w&usqp=CAU);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: none;
+    }

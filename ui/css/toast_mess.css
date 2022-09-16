@@ -1,0 +1,27 @@
+.toast {
+    display: none;
+}
+.toast-new,.toast-edit,.toast-delete {
+    height: 55px;
+    font-size: 13px;
+    box-shadow: -1px 1px 6px 2px rgb(0 0 0 / 88%);
+    color:#000000;
+    background-color: #ffffff;
+    width:250px;
+    font-family: 'Misa_bold';
+    position: fixed;
+    bottom:0;
+    right:0;
+    display: flex ;
+    align-items: center;
+    justify-content: space-between;
+}
+.toast-icon {
+    margin-left:16px;
+    font-size: 20px;
+}
+.toast-close {
+    font-size: 25px;
+    cursor: pointer;
+    margin-right:8px;
+}

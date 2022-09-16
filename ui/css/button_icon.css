@@ -1,0 +1,33 @@
+.button-icon {
+    display: flex;
+    align-items: center;
+}
+.icon-button {
+margin-left:-8px;
+margin-right:8px;
+}
+.content-button {
+margin-right:-8px;
+}
+
+.butt2 { margin-top:8px;
+    display:flex;}
+    .bt2 {
+        margin-right:1px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    .select-bt {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        padding:12px;
+    }
+    .select-bt:hover {
+        margin-left:-1px;
+        transform: rotate(180deg);
+        border-radius:4px 0px 0px 4px;
+        padding-top: 13px;
+    }
+    .bt2:hover {
+    margin-right: 0px;
+    }
